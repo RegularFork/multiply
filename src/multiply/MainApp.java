@@ -63,6 +63,7 @@ public class MainApp {
 	/**
 	 * Initialize the contents of the frame.
 	 */
+	@SuppressWarnings("unchecked")
 	private void initialize() {
 		random = new Random();
 		answer = new StringBuilder();
@@ -81,7 +82,7 @@ public class MainApp {
 		tabbedPane.addTab("Умножение", null, panel, null);
 		panel.setLayout(null);
 		
-		leftNum = new JLabel("2");
+		leftNum = new JLabel("");
 		leftNum.setFont(new Font("Tahoma", Font.PLAIN, 60));
 		leftNum.setHorizontalAlignment(SwingConstants.CENTER);
 		leftNum.setBounds(23, 11, 88, 83);
@@ -93,7 +94,7 @@ public class MainApp {
 		signLabel.setBounds(121, 30, 52, 52);
 		panel.add(signLabel);
 		
-		rightNum = new JLabel("3");
+		rightNum = new JLabel("");
 		rightNum.setHorizontalAlignment(SwingConstants.CENTER);
 		rightNum.setFont(new Font("Tahoma", Font.PLAIN, 60));
 		rightNum.setBounds(193, 11, 88, 83);
@@ -105,7 +106,7 @@ public class MainApp {
 		equalsLabel.setBounds(279, 30, 52, 52);
 		panel.add(equalsLabel);
 		
-		answerLabel = new JLabel("6");
+		answerLabel = new JLabel("");
 		answerLabel.setFont(new Font("Tahoma", Font.PLAIN, 60));
 		answerLabel.setBounds(347, 11, 88, 83);
 		panel.add(answerLabel);
@@ -227,6 +228,7 @@ public class MainApp {
 		JButton equalsButton = new JButton("=");
 		equalsButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if (answer.length() == 0) return;
 				startButton.setVisible(true);
 				checkAnswer();
 			}
